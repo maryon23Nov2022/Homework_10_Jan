@@ -60,7 +60,7 @@
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="home-v3.html">主页</a>
                                     </li>
                                     <li class="dropdown">
-                                        <a data-toggle="dropdown" class="dropdown-toggle disabled" href="books-media-list-view.html">图书 &amp; 期刊</a>
+                                        <a data-toggle="dropdown" class="dropdown-toggle disabled" href="home-v3.html">图书 &amp; 期刊</a>
                                     </li>
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#recommendbooks">推荐读物</a>
@@ -68,12 +68,14 @@
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">数据展示</a>
                                     </li>
-                                    <li><a href="contact.html">联系我们</a></li>
+                                    <li><a href="home-v3.html">联系我们</a></li>
                                 </ul>
                                 <!-- Header Topbar -->
                                 <div class="header-topbar hidden-md">
                                     <div class="topbar-links">
-                                        <a href="signin.html"><i class="fa fa-lock"></i>登录 / 注册</a>
+                                        <span id="info">
+                                            <a href="signin.html"><i class="fa fa-lock"></i>登录 / 注册</a>
+                                        </span>
                                         <span>|</span>
                                         <div class="header-cart dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -202,7 +204,7 @@
                 </div>
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="index-2.html">Home</a></li>
+                        <li><a href="home-v3.html">Home</a></li>
                         <li>Signin</li>
                     </ul>
                 </div>
@@ -232,20 +234,20 @@
                                                                     <span class="first-letter">账号</span>  
                                                                     <span class="second-letter">*</span>
                                                                 </label>
-                                                                <input type="text"  id="loginUsername" name="username" class="input-text">
+                                                                <input type="text" id="loginUsername" name="username" class="input-text" maxlength="16">
+                                                                <span id = "hint" style="display: none; color: brown;">用户名长度应大于等于3</span>
                                                              </p>
                                                             <p class="form-row form-row-last input-required">
                                                                 <label>
                                                                     <span class="first-letter">密码</span>  
                                                                     <span class="second-letter">*</span>
                                                                 </label>
-                                                                <input type="password" id="loginPassword" name="password" class="input-text">
+                                                                <input type="password" id="loginPassword" name="password" class="input-text" maxlength="16">
                                                             </p>
                                                             <div class="clear"></div>
                                                             <div class="password-form-row">
-                                                                <p class="form-row input-checkbox">
-                                                                    <input type="checkbox" value="forever" id="rememberme" name="rememberme">
-                                                                    <label class="inline" for="rememberme">记住密码</label>
+                                                                <p class="form-row input-checkbox" id="reason" style="display: none; color: brown;">
+                                                                    用户名或密码错误
                                                                 </p>
                                                             </div>
                                                             <input type="button" value="登录" id="login" class="button btn btn-default">
@@ -270,15 +272,22 @@
                                                                     <span class="first-letter">账号</span>  
                                                                     <span class="second-letter">*</span>
                                                                 </label>
-                                                                <input type="text" id="signupUsername" name="username" class="input-text">
+                                                                <input type="text" id="signupUsername" name="username" class="input-text" maxlength="16">
+                                                                <span id = "signuphint" style="display: none; color: brown;">用户名长度应大于等于3</span>
                                                             </p>
                                                             <p class="form-row input-required">
                                                                 <label>
                                                                     <span class="first-letter">密码</span>  
                                                                     <span class="second-letter">*</span>
                                                                 </label>
-                                                                <input type="password" id="signupPassword" name="password" class="input-text">
-                                                            </p>                                                                                
+                                                                <input type="password" id="signupPassword" name="password" class="input-text" maxlength="16">
+                                                                <span id = "pshint" style="display: none; color: brown;">密码长度应大于等于6</span>
+                                                            </p>
+                                                            <div class="password-form-row">
+                                                                <p class="form-row input-checkbox" id="result" style="display: none; color: brown;">
+                                                                    注册成功
+                                                                </p>
+                                                            </div>                                                                              
                                                             <div class="clear"></div>
                                                             <input type="button" value="注册" id="signup" class="button btn btn-default">
                                                             <div class="clear"></div>
@@ -477,7 +486,10 @@
 
     </body>
 </html>
+
 <script type="module">
-    import {main} from "/FormJS.js";
+    import { main } from "/FormJS.js";
+    import { registerfunc } from "/Register.js";
     main();
+    registerfunc();
 </script>

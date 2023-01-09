@@ -1,0 +1,5 @@
+mapper\UserMapper.class
+service\RegisterService.class
+service\GetInfoService.class
+service\LoginService.class
+pojo\User.class
