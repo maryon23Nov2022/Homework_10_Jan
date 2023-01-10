@@ -1,0 +1,13 @@
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:46:47 +0800] "OPTIONS /Backend/login HTTP/1.1" 200 - http-bio-8080-exec-1 281
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:46:48 +0800] "POST /Backend/login HTTP/1.1" 200 72 http-bio-8080-exec-2 657
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:46:49 +0800] "POST /Backend/getInfo HTTP/1.1" 200 8 http-bio-8080-exec-4 1
+127.0.0.1 - - [10/Jan/2023:18:52:08 +0800] "GET / HTTP/1.1" 404 - http-bio-8080-exec-1 0
+127.0.0.1 - - [10/Jan/2023:18:52:28 +0800] "GET /Backend/login HTTP/1.1" 405 1065 http-bio-8080-exec-3 243
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:52:53 +0800] "OPTIONS /Backend/login HTTP/1.1" 200 - http-bio-8080-exec-5 2
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:52:53 +0800] "POST /Backend/login HTTP/1.1" 200 68 http-bio-8080-exec-7 590
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:52:54 +0800] "POST /Backend/getInfo HTTP/1.1" 200 4 http-bio-8080-exec-8 1
+127.0.0.1 - - [10/Jan/2023:18:55:41 +0800] "GET / HTTP/1.1" 404 - http-bio-8080-exec-1 0
+127.0.0.1 - - [10/Jan/2023:18:55:49 +0800] "GET /Backend/login HTTP/1.1" 405 1065 http-bio-8080-exec-3 217
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:56:01 +0800] "OPTIONS /Backend/login HTTP/1.1" 200 - http-bio-8080-exec-5 1
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:56:02 +0800] "POST /Backend/login HTTP/1.1" 200 68 http-bio-8080-exec-7 550
+0:0:0:0:0:0:0:1 - - [10/Jan/2023:18:56:02 +0800] "POST /Backend/getInfo HTTP/1.1" 200 5 http-bio-8080-exec-8 2

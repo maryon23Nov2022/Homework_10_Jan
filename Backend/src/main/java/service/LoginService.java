@@ -17,9 +17,11 @@ import java.io.PrintWriter;
 
 @WebServlet("/login")
 public class LoginService extends HttpServlet{
+
     private static SqlSessionFactory sqlSessionFactory;
 
     static{
+        System.out.printf("loadsfaded\n");
         String resource = "mybatis-config.xml";
         try{
             InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -55,11 +57,11 @@ public class LoginService extends HttpServlet{
         }
         sqlSession.close();
     }
-
     @Override
     protected void doOptions(HttpServletRequest req, HttpServletResponse resp){
         resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:4040");
         resp.setHeader("Access-Control-Allow-Headers", "content-type");
         resp.setHeader("Access-Control-Allow-Credentials", "true");
+        System.out.printf("%s\n", req.toString());
     }
 }

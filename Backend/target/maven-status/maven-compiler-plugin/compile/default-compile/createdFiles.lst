@@ -1,5 +1,11 @@
+pojo\Transaction.class
+pojo\Books.class
+service\GetInfoService.class
+pojo\User.class
 mapper\UserMapper.class
 service\RegisterService.class
-service\GetInfoService.class
+service\ReturnService.class
+mapper\BooksMapper.class
+service\BorrowService.class
 service\LoginService.class
-pojo\User.class
+mapper\TransactionMapper.class
