@@ -1,19 +1,8 @@
-// import { loggedIn, user } from "./Utils/User.js";
-
-// console.log("loggedIn: "+typeof loggedIn);
-// console.log(loggedIn);
-
-// loggedIn = true;
-
 let httpRequest, username, password, url, a = false;
 const reason = document.getElementById("reason");
 const element = document.getElementById("info");
 
 const main = function(){
-    // if(loggedIn){
-    //     reason.style.display = "none";
-    //     element.innerHTML = user;
-    // }
     const botann = document.getElementById("login");
     const lenchecker = document.getElementById("loginUsername");
     lenchecker.addEventListener("blur", lenimpl);
@@ -42,12 +31,9 @@ const handler = function(){
         if(httpRequest.responseText === "0"){
             element.innerHTML = '<a href="signin.html"><i class="fa fa-lock"></i>登录 / 注册</a>';
             reason.style.display = "";
-            // loggedIn = false;
         } else{
             element.innerHTML = JSON.parse(httpRequest.responseText).username;
             reason.style.display = "none";
-            // loggedIn = true;
-            // user = element.innerHTML;
             location.assign("http://127.0.0.1:4040/home-v3.html");
         }
     }
@@ -68,8 +54,8 @@ const executor = function(){
     username = document.getElementById("loginUsername").value;
     password = document.getElementById("loginPassword").value;
     const data = {
-        "username":username,
-        "password":password
+        username: username,
+        password: password,
     }
     httpRequest.send(JSON.stringify(data));
     const string = JSON.stringify(data)

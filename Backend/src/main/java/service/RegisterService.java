@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import pojo.User;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +33,7 @@ public class RegisterService extends HttpServlet{
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:4040");
         PrintWriter printWriter = resp.getWriter();
         BufferedReader bufferedReader = req.getReader();
@@ -55,7 +54,7 @@ public class RegisterService extends HttpServlet{
         sqlSession.close();
     }
     @Override
-    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp){
         resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:4040");
         resp.setHeader("Access-Control-Allow-Headers", "content-type");
     }

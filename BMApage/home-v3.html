@@ -65,15 +65,21 @@
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#recommendbooks">推荐读物</a>
                                     </li>
                                     <li class="dropdown">
-                                        <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">数据展示</a>
+                                        <a data-toggle="dropdown" class="dropdown-toggle disabled" href="BookAdding.html">数据展示</a>
                                     </li>
-                                    <li><a href="signin.html">联系我们</a></li>
+                                    <li><a href="BookAdding.html">联系我们</a></li>
                                 </ul>
                                 <!-- Header Topbar -->
                                 <div class="header-topbar hidden-md">
                                     <div class="topbar-links">
-                                        <span id = "info">
-                                            <a href="signin.html"><i class="fa fa-lock"></i>登录 / 注册</a>
+                                        <span>
+                                            <a id="info1" href="signin.html"><i class="fa fa-lock"></i>登录 / 注册</a>
+                                            <div id="info2" class="zh_dropdown">
+                                                <span class="zh_dropdown-head"></span>
+                                                <div class="zh_dropdown-options">
+                                                    <a id="logout">Logout</a>
+                                                </div>
+                                            </div>
                                         </span>
                                         <span>|</span>
                                         <div class="header-cart dropdown">
@@ -1041,6 +1047,55 @@
 </html>
 
 <script type="module">
-    import { update } from "/Home.js";
-    update();
+    import { update, logoutTrigger } from "/Home.js";
+    update(); logoutTrigger();
 </script>
+
+<style>
+    .zh_dropdown{
+        display: inline-block;
+    }
+
+    .zh_arrow{
+        display: inline-block;
+        transform: rotate(-90deg) scale(0.8, 1.6) translateX(-4px);
+        font-style: normal;
+        font-weight: 1000;
+        margin-left: 8px;
+    }
+
+    .zh_dropdown-head{
+        border:none;
+        border-radius:5px;
+        padding:10px 10px;
+        font-size:18px;
+        cursor:pointer;
+    }
+
+    .zh_dropdown-head:hover{
+        color:#908b8b
+    }
+
+    .zh_dropdown-options{
+        display: none;
+    }
+
+    .zh_dropdown:hover .zh_dropdown-options{
+        display: block;
+    }
+
+    .zh_dropdown-options a{
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        color: #000000;
+        text-decoration: none;
+        background-color:#fff;
+        border-radius: 5px;
+        padding:10px 20px;
+    }
+
+    .zh_dropdown-options a:hover{
+        background-color: #ddd;
+    }
+</style>

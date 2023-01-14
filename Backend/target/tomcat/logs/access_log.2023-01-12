@@ -1,0 +1,5 @@
+127.0.0.1 - - [12/Jan/2023:11:31:45 +0800] "GET /Backend/a.html HTTP/1.1" 200 18 http-bio-8080-exec-1 37
+127.0.0.1 - - [12/Jan/2023:11:31:49 +0800] "GET /Backend/login HTTP/1.1" 405 1065 http-bio-8080-exec-3 259
+127.0.0.1 - - [12/Jan/2023:11:43:55 +0800] "GET /Backend/login HTTP/1.1" 405 1065 http-bio-8080-exec-5 2
+0:0:0:0:0:0:0:1 - - [12/Jan/2023:16:11:52 +0800] "OPTIONS /Backend/login HTTP/1.1" 200 - http-bio-8080-exec-1 208
+0:0:0:0:0:0:0:1 - - [12/Jan/2023:16:11:52 +0800] "POST /Backend/login HTTP/1.1" 500 12996 http-bio-8080-exec-3 259
