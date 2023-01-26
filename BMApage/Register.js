@@ -34,12 +34,8 @@ const handler = function(){
     if(httpRequest.readyState === 4 && httpRequest.status === 200){
         console.log(httpRequest.responseText);
         const result = document.getElementById("result");
-        if(httpRequest.responseText === "0"){
-            result.innerHTML = "用户名已存在";
-        } else{
-            result.innerHTML = "注册成功";
-        }
-        result.style.display = "";
+        result.innerHTML = httpRequest.responseText;
+        result.style.display = "initial";
     }
 }
 
@@ -50,7 +46,7 @@ const executor = function(){
     if(username.length < 3 || password.length < 6) return;
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = handler;
-    url = "http://localhost:8080/Backend/register";
+    url = "http://127.0.0.1:8080/Backend/register";
     httpRequest.open("POST", url);
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     username = document.getElementById("signupUsername").value;

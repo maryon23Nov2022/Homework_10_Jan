@@ -59,7 +59,7 @@
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="home-v3.html">主页</a>
                                     </li>
                                     <li class="dropdown">
-                                        <a data-toggle="dropdown" class="dropdown-toggle disabled" href="home-v3.html">图书 &amp; 期刊</a>
+                                        <a data-toggle="dropdown" class="dropdown-toggle disabled" href="Transaction.html">图书 &amp; 期刊</a>
                                     </li>
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#recommendbooks">推荐读物</a>
@@ -1047,8 +1047,12 @@
 </html>
 
 <script type="module">
-    import { update, logoutTrigger } from "/Home.js";
+    import { update, logoutTrigger, username} from "/Home.js";
     update(); logoutTrigger();
+    setTimeout(()=>{
+        console.log("home-v3: "+username);
+    }, 2000);
+    console.log("home-v3-init: "+username);
 </script>
 
 <style>

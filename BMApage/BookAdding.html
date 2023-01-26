@@ -12,9 +12,9 @@
         <div style="margin-left: 20vw; margin-right: 20vw;">
             <ul class="navbar">
                 <li><a href="home-v3.html">主页</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li style="float:right; padding: 14px 16px;">About</li>
+                <!-- <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li> -->
+                <li id="user" style="float:right; padding: 14px 16px;">About</li>
             </ul>
 
             <form class="searchbar">
@@ -41,12 +41,20 @@
                 <button type="button" onclick="search()">搜索</button>
             </form>
 
-            <table id="customers"></table>
+            <table id="customers">
+                <tr>
+                    <th width="15%">书名</th>
+                    <th width="15%">作者</th>
+                    <th width="40%">描述</th>
+                    <th width="15%">数量</th>
+                    <th width="15%"><button type="button" id="addBook" onclick="addBook()">添加书籍</button></th>
+                </tr>
+            </table>
         </div>
         
         <div class="overlay" id="divOne">
             <div class="wrapper">
-                <h2>添加书籍</h2>
+                <h2 id="title">添加书籍</h2>
                 <a class="close" href="#">&times</a>
                 <div class="container">
                     <form>
@@ -62,7 +70,7 @@
 
                         <label>
                             描述
-                            <textarea maxlength="128" id="description" type="text" rows="8"></textarea>
+                            <textarea maxlength="512" id="description" type="text" rows="8"></textarea>
                         </label>
 
                         <label>
@@ -103,7 +111,7 @@
                             图书
                             <input type="radio" name="type" value="图书&" checked>
                         </label>
-                        <span class="tips"></span><button type="button" onclick="main()">提交</button>
+                        <span class="tips"></span><button type="button" onclick='main()'>提交</button>
                     </form>
                 </div>
             </div>
@@ -112,138 +120,12 @@
     </body>
 </html>
 
-<script>
-    const inputFrames = document.querySelectorAll("input");
-    console.log(inputFrames.length);
-    const tips = document.querySelectorAll(".tips");
-    const httpRequest = new XMLHttpRequest();
-
-    inputFrames.forEach(element => {
-        element.addEventListener("click", function(){
-            for(let i = 0; i < tips.length; ++ i) tips[i].style.display = "none";
-        });
-    });
-
-    const addBook = function(){
-        console.log("addBook");
-        location.assign("http://127.0.0.1:4040/BookAdding.html#divOne");
-    }
-
-    const addBookHandler = function(){
-        if(httpRequest.readyState === 4 && httpRequest.status === 200){
-            console.log(httpRequest.responseText);
-            if(httpRequest.responseText === "1"){
-                tips[3].innerHTML = "提交成功！";
-            } else if(httpRequest.responseText === "-1"){
-                tips[3].innerHTML = "权限错误！";
-            } else{
-                tips[3].innerHTML = "该书以存在，如想更改图书数量请点击修改按钮。"
-            }
-            tips[3].style.display = "initial";
-        }
-    }
-
-    const main = function(){
-        const bookName = document.getElementById("bookName").value;
-        const author = document.getElementById("author").value;
-        const description = document.getElementById("description").value;
-        const surplus = document.getElementById("surplus").value;
-        if(bookName.length === 0){
-            console.log(bookName.length);
-            tips[0].style.display = "initial";
-            return;
-        } else if(author.length === 0){
-            tips[1].style.display = "initial";
-            return;
-        } else if(surplus.length === 0){
-            tips[2].innerHTML = "数量不能为空";
-            tips[2].style.display = "initial";
-            return;
-        }
-        console.log(surplus.length);
-        let num = 0;
-        for(let i = 0; i < surplus.length; ++ i){
-            if(surplus.charCodeAt(i) < 48 || 57 < surplus.charCodeAt(i)){
-                console.log(surplus.charCodeAt(i));
-                tips[2].innerHTML = "非法输入";
-                tips[2].style.display = "initial";
-                return;
-            }
-            num = num * 10 + surplus.charCodeAt(i) - 48;
-        }
-        const classification = document.querySelectorAll("input[type=checkbox]")
-        let classificationResult = "";
-        for(let i = 0; i < 5; ++ i){
-            console.log(classification[i].value);
-            if(classification[i].checked) 
-                classificationResult =  classificationResult.concat(classification[i].value);
-        }
-        const type = document.querySelector("input[name=type]:checked").value;
-        const book = {
-            bookName: bookName,
-            author: author,
-            surplus: num,
-            classification: classificationResult,
-            type: type,
-        }
-        console.log(book);
-        httpRequest.onreadystatechange = addBookHandler;
-        const url = "http://localhost:8080/Backend/addBook";
-        httpRequest.open("POST", url);
-        httpRequest.setRequestHeader('Content-Type', 'application/json');
-        httpRequest.withCredentials = true;
-        httpRequest.send(JSON.stringify(book));
-    }
-
-    const searchHandler = function(){
-        if(httpRequest.readyState === 4 && httpRequest.status === 200){
-            console.log(httpRequest.responseText);
-            const list = JSON.parse(httpRequest.responseText);
-            const view = document.querySelector("#customers");
-            let content = `
-                <tr>
-                    <th width="15%">书名</th>
-                    <th width="15%">作者</th>
-                    <th width="40%">描述</th>
-                    <th width="15%">数量</th>
-                    <th width="15%"><button type="button" id="addBook" onclick="addBook()">添加书籍</button></th>
-                </tr>
-            `
-            for(let i = 0; i < list.length; ++ i){
-                console.log(i, list[i].description, typeof list[i].description);
-                if(list[i].description === undefined){
-                    list[i].description = "";
-                }
-                content += `
-                    <tr>
-                        <td>${list[i].bookName}</td>
-                        <td>${list[i].author}</td>
-                        <td>${list[i].description}</td>
-                        <td>${list[i].surplus}</td>
-                        <td><button type="button" style="padding:8px 16px; border-radius:16px; cursor:pointer;">修改</button></td>
-                    </tr>
-                `
-            }
-            view.innerHTML = content;
-        }
-    }
-
-    const search = function(){
-        const keyword = document.querySelector("#keyword").value;
-        const classification = document.querySelector("select[name=classification]").value;
-        const type = document.querySelector("select[name=type]").value;
-        const data = {
-            keyword: keyword,
-            classification: classification,
-            type: type,
-        }
-        console.log(data);
-        httpRequest.onreadystatechange = searchHandler;
-        const url = "http://localhost:8080/Backend/search";
-        httpRequest.open("POST", url);
-        httpRequest.setRequestHeader('Content-Type', 'application/json');
-        httpRequest.send(JSON.stringify(data));
-    }
-
-    search();
+<script src="/zh_js/BookAdding.js"></script>
+<script type="module">
+    import { update, username } from "/Home.js";
+    update();
+    setTimeout(()=>{
+        console.log(username);
+        user.innerHTML = `你好, ${username}`;
+    }, 200);
 </script>

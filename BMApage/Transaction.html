@@ -1,0 +1,88 @@
+<script type="module">
+    import {borrowBook, returnBook } from "/zh_js/Transaction.js";
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="zh_css/Search&List.css" rel="stylesheet">
+        <title>BookAdding</title>
+    </head>
+    <body style="background-color: darkgray;">
+
+        <div style="margin-left: 20vw; margin-right: 20vw;">
+            <ul class="navbar">
+                <li><a href="home-v3.html">主页</a></li>
+                <!-- <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li> -->
+                <li id="user" style="float:right; padding: 14px 16px;">About</li>
+            </ul>
+
+            <form class="searchbar">
+                <label>
+                    <input id="keyword" maxlength="16" type="text" placeholder="输入关键词">
+                </label>
+                <label>
+                    <select name="classification">
+                        <option value="">所有分类</option>
+                        <option value="哲学">哲学</option>
+                        <option value="科学">科学</option>
+                        <option value="政治">政治</option>
+                        <option value="军事">军事</option>
+                        <option value="经济">经济</option>
+                    </select>
+                </label>
+                <label>
+                    <select name="type">
+                        <option value="">所有类型</option>
+                        <option value="期刊">期刊</option>
+                        <option value="图书">图书</option>
+                    </select>
+                </label>
+                <button id="search" type="button">搜索</button>
+            </form>
+
+            <table id="customers">
+                <tr>
+                    <th width="15%">书名</th>
+                    <th width="15%">作者</th>
+                    <th width="40%">描述</th>
+                    <th width="15%">数量</th>
+                    <th width="15%">操作</th>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>
+
+<script type="module">
+    import { search, borrowBook, returnBook } from "/zh_js/Transaction.js";
+    import { update, username } from "/Home.js";
+    update();
+    setTimeout(()=>{
+        console.log(username);
+        user.innerHTML = `你好, ${username}`;
+    }, 200);
+    search();
+    const searchTrigger = document.querySelector("#search");
+    searchTrigger.addEventListener("click", search);
+    setTimeout(()=>{
+        const borrowTrigger = document.querySelectorAll(".borrow");
+        console.log(borrowTrigger.length);
+        for(let i = 0; i < borrowTrigger.length; ++ i){
+            // console.log(borrowTrigger[i].id);
+            let index = 0;
+            for(let j = 6; j < borrowTrigger[i].id.length; ++ j){
+                index = index * 10 + borrowTrigger[i].id.charCodeAt(j) - 48;
+            }
+            // console.log(typeof index);
+            borrowTrigger[i].addEventListener("click", function(){
+                borrowBook(index);
+            });
+        }
+    }, 200);
+</script>

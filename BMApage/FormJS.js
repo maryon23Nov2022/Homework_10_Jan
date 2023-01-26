@@ -45,7 +45,7 @@ const executor = function(){
     console.log("executing\n");
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = handler;
-    url = "http://localhost:8080/Backend/login";
+    url = "http://127.0.0.1:8080/Backend/login";
 
     httpRequest.withCredentials = true;
     
