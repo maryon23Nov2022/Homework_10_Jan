@@ -124,8 +124,7 @@
 <script type="module">
     import { update, username } from "/Home.js";
     update();
-    setTimeout(()=>{
-        console.log(username);
-        user.innerHTML = `你好, ${username}`;
-    }, 200);
+    
+    console.log(username);
+    user.innerHTML = `你好, ${username}`;       //It seems like element id could be used directly without using selector
 </script>

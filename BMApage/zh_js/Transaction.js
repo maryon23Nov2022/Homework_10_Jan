@@ -33,6 +33,19 @@ const searchHandler = function(){
             `
         }
         view.innerHTML = content;
+
+        const borrowTrigger = document.querySelectorAll(".borrow");
+        console.log(borrowTrigger.length);
+        for(let i = 0; i < borrowTrigger.length; ++ i){
+            let index = 0;
+            for(let j = 6; j < borrowTrigger[i].id.length; ++ j){
+                index = index * 10 + borrowTrigger[i].id.charCodeAt(j) - 48;
+            }
+            borrowTrigger[i].addEventListener("click", function(){
+                borrowBook(index);
+            });
+        }
+
     }
 }
 
@@ -50,7 +63,7 @@ const search = function(){
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = searchHandler;
     url = "http://127.0.0.1:8080/Backend/search";
-    httpRequest.open("POST", url);
+    httpRequest.open("POST", url, false);
     httpRequest.withCredentials = true;
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     httpRequest.send(JSON.stringify(data));
@@ -59,6 +72,7 @@ const search = function(){
 const borrowHandler = function(){
     if(httpRequest.readyState === 4 && httpRequest.status === 200){
         console.log(httpRequest.responseText);
+        alert(httpRequest.responseText);
         search();
     }
 }
@@ -75,8 +89,6 @@ const borrowBook = function(index){
     httpRequest.withCredentials = true;
     httpRequest.send(JSON.stringify(data));
 }
-
-// search();
 
 export{
     search,

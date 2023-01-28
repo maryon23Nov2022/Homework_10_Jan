@@ -24,7 +24,7 @@ const update = function(){
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = handler;
     const url = "http://127.0.0.1:8080/Backend/getInfo";
-    httpRequest.open("GET", url);
+    httpRequest.open("GET", url, false);
     httpRequest.withCredentials = true;
     httpRequest.send();
 }

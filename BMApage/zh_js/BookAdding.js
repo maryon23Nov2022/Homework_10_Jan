@@ -142,6 +142,7 @@ const search = function(){
         keyword: keyword,
         classification: classification,
         type: type,
+        operation: '0',
     }
     console.log(data);
     httpRequest = new XMLHttpRequest();
