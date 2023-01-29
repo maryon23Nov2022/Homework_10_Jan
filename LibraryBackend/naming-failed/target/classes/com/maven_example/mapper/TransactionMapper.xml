@@ -9,4 +9,13 @@
     <select id="filter" resultType="com.maven_example.pojo.Transaction">
         select * from transaction where book_id = #{bookId} and user_id = #{userId} order by id desc limit 1;
     </select>
+    <select id="getTransactionById" resultType="com.maven_example.pojo.Transaction">
+        select * from transaction where user_id = #{userId};
+    </select>
+    <select id="getUnreturned" resultType="com.maven_example.pojo.Transaction">
+        select * from transaction where user_id = #{userId} and return_date is null;
+    </select>
+    <update id="returnBook">
+        update transaction set return_date = #{returnDate} where id = #{id};
+    </update>
 </mapper>

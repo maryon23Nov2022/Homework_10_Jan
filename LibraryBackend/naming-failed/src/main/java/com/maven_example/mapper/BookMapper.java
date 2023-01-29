@@ -13,4 +13,5 @@ public interface BookMapper{
     Book selectById(Integer id);
     Integer updateById(Book book);
     void borrowBook(@Param("id")Integer id);
+    void returnBook(@Param("id")Integer id);
 }

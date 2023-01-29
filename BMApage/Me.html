@@ -12,52 +12,37 @@
         <div style="margin-left: 20vw; margin-right: 20vw;">
             <ul class="navbar">
                 <li><a href="home-v3.html">主页</a></li>
-                <!-- <li><a href="#news">News</a></li>
-                <li><a href="#contact">Contact</a></li> -->
-                <li id="user" style="float:right; padding: 14px 16px;">About</li>
+                <!-- <li id="user" style="float:right; padding: 14px 16px;">About</li> -->
             </ul>
 
-            <!-- <form class="searchbar">
-                <label>
-                    <input id="keyword" maxlength="16" type="text" placeholder="输入关键词">
-                </label>
-                <label>
-                    <select name="classification">
-                        <option value="">所有分类</option>
-                        <option value="哲学">哲学</option>
-                        <option value="科学">科学</option>
-                        <option value="政治">政治</option>
-                        <option value="军事">军事</option>
-                        <option value="经济">经济</option>
-                    </select>
-                </label>
-                <label>
-                    <select name="type">
-                        <option value="">所有类型</option>
-                        <option value="期刊">期刊</option>
-                        <option value="图书">图书</option>
-                    </select>
-                </label>
-                <button id="search" type="button">搜索</button>
-            </form>
+            <div style="display: flex; justify-content: space-around;">
+                <div style="width: 32%; background-color: beige;">
+                    <h2 id="username">用户名：</h2>
+                    <h2 id="identity">身份：</h2>
+                    <h2 id="number">已借书籍：</h2>
+                </div>
 
-            <table id="customers">
-                <tr>
-                    <th width="15%">书名</th>
-                    <th width="15%">作者</th>
-                    <th width="40%">描述</th>
-                    <th width="15%">数量</th>
-                    <th width="15%">操作</th>
-                </tr>
-            </table> -->
+                <div style="width: 48%;">
+                    <table id="customers">
+                        <tr>
+                            <th style="width: 30%;">书名</th>
+                            <th style="width: 60%;">借阅日期</th>
+                            <th style="width: 10%;">操作</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
     </body>
 </html>
 
 <script type="module">
-    import { update, username } from "/Home.js";
+    import { search } from "./zh_js/Me.js";
+    import { update, username, identity } from "./Home.js";
+    search();
     update();
-    const user = document.querySelector("#user");
-    user.innerHTML = `你好, ${username}`;
+    document.querySelector("#username").innerHTML = `用户名：${username}`;
+    document.querySelector("#identity").innerHTML = `身份：${identity}`;
 </script>

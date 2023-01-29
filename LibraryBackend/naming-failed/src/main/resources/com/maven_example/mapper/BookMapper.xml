@@ -42,4 +42,8 @@
     <update id="borrowBook">
         update book set surplus = surplus - 1 where id = #{id};
     </update>
+
+    <update id="returnBook">
+        update book set surplus = surplus + 1 where id = #{id};
+    </update>
 </mapper>

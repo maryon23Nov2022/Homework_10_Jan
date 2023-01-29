@@ -1,8 +1,11 @@
-let httpRequest, username = "abc";
+let httpRequest, username = "abc", identity = "student";
 
 const handler = function(){
     if(httpRequest.readyState === 4 && httpRequest.status === 200){
-        username = httpRequest.responseText;
+        const data = JSON.parse(httpRequest.responseText);
+        username = data.username;
+        identity = data.identity;
+
         const info1 = document.getElementById("info1");
         const info2 = document.getElementById("info2");
         if(info1 === null) return;
@@ -11,7 +14,7 @@ const handler = function(){
             info2.style.display = "none";
         } else{
             const info = document.querySelector(".zh_dropdown-head");
-            info.innerHTML = `${httpRequest.responseText} <i class="zh_arrow">&lt</i>`;
+            info.innerHTML = `${username} <i class="zh_arrow">&lt</i>`;
             info1.style.display = "none";
             info2.style.display = "";
             // console.log(info.innerHTML);
@@ -48,5 +51,6 @@ const logout = function(){
 export{
     update,
     logoutTrigger,
-    username
+    username,
+    identity,
 }
