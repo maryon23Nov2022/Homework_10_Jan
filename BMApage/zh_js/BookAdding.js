@@ -12,16 +12,16 @@ inputFrames.forEach(element => {
 const addBook = function(){
     console.log("addBook");
     id = null;
-    url = "http://127.0.0.1:8080/Backend/addBook";
+    url = "http://127.0.0.1:8080/backend/addBook";
     const title = document.querySelector("#title");
     title.innerHTML = "添加书籍";
     for(let i = 0; i < tips.length; ++ i) tips[i].style.display = "none";
-    location.assign("http://127.0.0.1:4040/BookAdding.html#divOne");
+    location.assign("BookAdding.html#divOne");
 }
 
 const updateBook = function(index){
     id = list[index].id;
-    url = "http://127.0.0.1:8080/Backend/updateBook";
+    url = "http://127.0.0.1:8080/backend/updateBook";
     for(let i = 0; i < tips.length; ++ i) tips[i].style.display = "none";
 
     inputFrames[0].value = list[index].bookName;
@@ -33,7 +33,7 @@ const updateBook = function(index){
     title.innerHTML = "修改数据";
     console.log(description);
 
-    location.assign("http://127.0.0.1:4040/BookAdding.html#divOne");
+    location.assign("BookAdding.html#divOne");
 }
 
 const addBookHandler = function(){
@@ -42,7 +42,7 @@ const addBookHandler = function(){
         tips[3].innerHTML = httpRequest.responseText;
         tips[3].style.display = "initial";
         setTimeout(()=>{
-            location.assign("http://127.0.0.1:4040/BookAdding.html");
+            location.assign("BookAdding.html");
         }, 1000)
     }
 }
@@ -147,7 +147,7 @@ const search = function(){
     console.log(data);
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = searchHandler;
-    url = "http://127.0.0.1:8080/Backend/search";
+    url = "http://127.0.0.1:8080/backend/search";
     httpRequest.open("POST", url);
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     httpRequest.send(JSON.stringify(data));

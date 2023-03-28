@@ -15,9 +15,9 @@
     <select id="selectDynamically" resultType="pojo.User">
         select * from user where 1 = 1
         <if test="id != null"> and id = #{id}</if>
-        <if test="username != null and username != ''"> and username like #{username}</if>
-        <if test="password != null and password != ''"> and password like #{password}</if>
-        <if test="identity != null and identity != ''"> and identity like #{identity}</if>
+        <if test="username != '%%'"> and username like #{username}</if>
+        <if test="password != '%%'"> and password like #{password}</if>
+        <if test="identity != '%%'"> and identity like #{identity}</if>
     </select>
     <insert id="insert">
         insert into user values(null, #{username}, #{password}, #{identity})

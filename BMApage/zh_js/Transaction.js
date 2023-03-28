@@ -62,7 +62,7 @@ const search = function(){
     console.log(data);
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = searchHandler;
-    url = "http://127.0.0.1:8080/Backend/search";
+    url = "http://127.0.0.1:8080/backend/search";
     httpRequest.open("POST", url, false);
     httpRequest.withCredentials = true;
     httpRequest.setRequestHeader('Content-Type', 'application/json');
@@ -83,7 +83,7 @@ const borrowBook = function(index){
     }
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = borrowHandler;
-    url = "http://127.0.0.1:8080/Backend/borrowBook"
+    url = "http://127.0.0.1:8080/backend/borrowBook"
     httpRequest.open("POST", url);
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     httpRequest.withCredentials = true;

@@ -1,6 +1,6 @@
 package com.maven_example.service.user;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.maven_example.mapper.UserMapper;
 import com.maven_example.pojo.User;
 import com.maven_example.utils.SqlSessionFactoryUtility;
@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 @WebServlet("/register")
 public class RegisterService extends HttpServlet{
@@ -25,6 +26,14 @@ public class RegisterService extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+
+        Enumeration<String> enumeration = req.getHeaders("Origin");
+        if(enumeration != null){
+            while(enumeration.hasMoreElements()){
+                System.out.printf("Register Origin: %s\n", enumeration.nextElement());
+            }
+        }
+
         resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:4040");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = resp.getWriter();

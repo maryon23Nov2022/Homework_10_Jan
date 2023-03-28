@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11806684",
+      "name": "图书馆生活2",
+      "font_class": "tushuguanshenghuo",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    }
+  ]
+}

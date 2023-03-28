@@ -1,7 +1,7 @@
 package com.maven_example.service.book;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import com.maven_example.mapper.BookMapper;
 import com.maven_example.mapper.TransactionMapper;
 import com.maven_example.pojo.Book;

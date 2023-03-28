@@ -46,7 +46,7 @@ const executor = function(){
     if(username.length < 3 || password.length < 6) return;
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = handler;
-    url = "http://127.0.0.1:8080/Backend/register";
+    url = "http://127.0.0.1:8080/backend/register";
     httpRequest.open("POST", url);
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     username = document.getElementById("signupUsername").value;

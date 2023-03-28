@@ -25,7 +25,7 @@ class Resource implements AutoCloseable{
     Resource(){}
 
     @Override
-    public void close() throws Exception {
+    public void close() throws Exception{
         System.out.printf("closed\n");
     }
 }

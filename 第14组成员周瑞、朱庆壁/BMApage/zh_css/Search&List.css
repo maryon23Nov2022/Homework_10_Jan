@@ -1,0 +1,144 @@
+.navbar{
+    list-style-type: none;
+    color: white;
+    padding-left: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar li{
+    float: left;
+}
+
+.navbar li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover{
+    background-color: #111;
+}
+
+#addBook{
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#customers{
+    border-collapse: collapse;
+    font-size: larger;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#customers th, #customers td{
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+    
+#customers tr:nth-child(even){background-color: #cfcbcb;}
+
+#customers tr:hover{background-color: #ddd;}
+
+#customers th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    /* transition: opacity 500ms; */
+    visibility: hidden;
+    overflow-y: scroll;
+    /* opacity: 0; */
+}
+
+.overlay:target{
+    visibility: visible;
+}
+
+.wrapper{
+    margin: 70px auto;
+    padding: 20px;
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    width: 40%;
+    position: relative;
+    /* transition: 5s; */
+}
+
+.wrapper h2{
+    margin-top: 0;
+    color: #333;
+}
+
+.wrapper .close{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.wrapper .close:hover{
+    color: #06d85f;
+}
+
+.container{
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    padding: 20px 0;
+}
+
+.container form label{
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.container input[type=text], .container textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.container button{
+    border-radius: 50px;
+    font-size: 15px;
+    border: none;
+    background-color: #413b3b;
+    color: #fff;
+    padding: 15px 50px;
+    letter-spacing: 8px;
+    cursor: pointer;
+    float: right;
+}
+
+.tips{
+    color: red;
+    letter-spacing: normal;
+    margin-left: 2vw;
+    display: none;
+}

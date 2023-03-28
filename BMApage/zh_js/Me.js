@@ -3,7 +3,7 @@ let httpRequest, url;
 const searchHandler = function(){
     if(httpRequest.readyState === 4 && httpRequest.status === 200){
         if(httpRequest.responseText === "用户未登录"){
-            location.assign("http://127.0.0.1:4040/signin.html");
+            location.assign("signin.html");
             return;
         }
         const data = JSON.parse(httpRequest.responseText);
@@ -51,7 +51,7 @@ const searchHandler = function(){
 const search = function(){
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = searchHandler;
-    url = "http://127.0.0.1:8080/Backend/transaction/search";
+    url = "http://127.0.0.1:8080/backend/transaction/search";
     httpRequest.open("GET", url, true);
     httpRequest.withCredentials = true;
     httpRequest.send();
@@ -70,7 +70,7 @@ const returnBook = function(index){
     }
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = returnHandler;
-    url = "http://127.0.0.1:8080/Backend/returnBook";
+    url = "http://127.0.0.1:8080/backend/returnBook";
     httpRequest.open("POST", url, true);
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     httpRequest.withCredentials = true;

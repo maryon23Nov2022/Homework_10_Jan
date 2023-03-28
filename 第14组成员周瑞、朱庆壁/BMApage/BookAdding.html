@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="zh_css/Search&List.css" rel="stylesheet">
+        <title>BookAdding</title>
+    </head>
+    <body style="background-color: darkgray;">
+
+        <div style="margin-left: 20vw; margin-right: 20vw;">
+            <ul class="navbar">
+                <li><a href="home-v3.html">主页</a></li>
+                <!-- <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li> -->
+                <li id="user" style="float:right; padding: 14px 16px;">About</li>
+            </ul>
+
+            <form class="searchbar">
+                <label>
+                    <input id="keyword" maxlength="16" type="text" placeholder="输入关键词">
+                </label>
+                <label>
+                    <select name="classification">
+                        <option value="">所有分类</option>
+                        <option value="哲学">哲学</option>
+                        <option value="科学">科学</option>
+                        <option value="政治">政治</option>
+                        <option value="军事">军事</option>
+                        <option value="经济">经济</option>
+                    </select>
+                </label>
+                <label>
+                    <select name="type">
+                        <option value="">所有类型</option>
+                        <option value="期刊">期刊</option>
+                        <option value="图书">图书</option>
+                    </select>
+                </label>
+                <button type="button" onclick="search()">搜索</button>
+            </form>
+
+            <table id="customers">
+                <tr>
+                    <th width="15%">书名</th>
+                    <th width="15%">作者</th>
+                    <th width="40%">描述</th>
+                    <th width="15%">数量</th>
+                    <th width="15%"><button type="button" id="addBook" onclick="addBook()">添加书籍</button></th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="overlay" id="divOne">
+            <div class="wrapper">
+                <h2 id="title">添加书籍</h2>
+                <a class="close" href="#">&times</a>
+                <div class="container">
+                    <form>
+                        <label>
+                            书名<span class="tips">用户名不能为空↓</span>
+                            <input minlength="1" maxlength="16" id="bookName" type="text">
+                        </label>
+
+                        <label>
+                            作者<span class="tips">作者名不能为空↓</span>
+                            <input minlength="1" maxlength="16" id="author" type="text">
+                        </label>
+
+                        <label>
+                            描述
+                            <textarea maxlength="512" id="description" type="text" rows="8"></textarea>
+                        </label>
+
+                        <label>
+                            数量<span class="tips">非法输入↓</span>
+                            <input maxlength="4" id="surplus" type="text">
+                        </label>
+
+                        <br><br>
+                        <label>分类：</label>
+                        <label style="margin-right: 10%;">
+                            哲学
+                            <input type="checkbox" value="哲学&">
+                        </label>
+                        <label style="margin-right: 10%;">
+                            科学
+                            <input type="checkbox" value="科学&">
+                        </label>
+                        <label style="margin-right: 10%;">
+                            政治
+                            <input type="checkbox" value="政治&">
+                        </label>
+                        <label style="margin-right: 10%;">
+                            军事
+                            <input type="checkbox" value="军事&">
+                        </label>
+                        <label>
+                            经济
+                            <input type="checkbox" value="经济&">
+                        </label>
+                        <br><br><br>
+
+                        <label>类型：</label>
+                        <label style="margin-right: 10%;">
+                            期刊
+                            <input type="radio" name="type" value="期刊&">
+                        </label>
+                        <label>
+                            图书
+                            <input type="radio" name="type" value="图书&" checked>
+                        </label>
+                        <span class="tips"></span><button type="button" onclick='main()'>提交</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
+<script src="/zh_js/BookAdding.js"></script>
+<script type="module">
+    import { update, username } from "/Home.js";
+    update();
+    
+    console.log(username);
+    user.innerHTML = `你好, ${username}`;       //It seems like element id could be used directly without using selector
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="zh_css/Search&List.css", rel="stylesheet">
+        <title>Document</title>
+    </head>
+    <body style="background-color: darkgray;">
+
+        <div style="margin-left: 20vw; margin-right: 20vw;">
+            <ul class="navbar">
+                <li><a href="home-v3.html">主页</a></li>
+                <!-- <li id="user" style="float:right; padding: 14px 16px;">About</li> -->
+            </ul>
+
+            <div style="display: flex; justify-content: space-around;">
+                <div style="width: 32%; background-color: beige;">
+                    <h2 id="username">用户名：</h2>
+                    <h2 id="identity">身份：</h2>
+                    <h2 id="number">已借书籍：</h2>
+                </div>
+
+                <div style="width: 48%;">
+                    <table id="customers">
+                        <tr>
+                            <th style="width: 30%;">书名</th>
+                            <th style="width: 60%;">借阅日期</th>
+                            <th style="width: 10%;">操作</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>
+
+<script type="module">
+    import { search } from "./zh_js/Me.js";
+    import { update, username, identity } from "./Home.js";
+    search();
+    update();
+    document.querySelector("#username").innerHTML = `用户名：${username}`;
+    document.querySelector("#identity").innerHTML = `身份：${identity}`;
+</script>

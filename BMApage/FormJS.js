@@ -34,7 +34,7 @@ const handler = function(){
         } else{
             element.innerHTML = JSON.parse(httpRequest.responseText).username;
             reason.style.display = "none";
-            location.assign("http://127.0.0.1:4040/home-v3.html");
+            location.assign("home-v3.html");
         }
     }
 }
@@ -45,7 +45,7 @@ const executor = function(){
     console.log("executing\n");
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = handler;
-    url = "http://127.0.0.1:8080/Backend/login";
+    url = "http://127.0.0.1:8080/backend/login";
 
     httpRequest.withCredentials = true;
     
